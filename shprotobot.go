@@ -45,7 +45,7 @@ func main() {
 			word = strings.ToLower(word)
 			matched := reg.MatchString(word)
 			fatal(err)
-			if matched {
+			if len(word) > 3 && matched {
 				shprots = append(shprots, fmt.Sprintf("ш%s", word))
 			}
 		}
