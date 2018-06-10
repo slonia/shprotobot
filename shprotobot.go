@@ -51,10 +51,18 @@ func main() {
 		}
 		if len(shprots) > 0 {
 			text := shprots[rand.Intn(len(shprots))]
+			text = stripText(text)
 			msg := tgbotapi.NewMessage(update.Message.Chat.ID, text)
 			bot.Send(msg)
 		}
 	}
+}
+
+func stripText(str string) string {
+	for strings.HasSuffix(str, ",") || strings.HasSuffix(str, ".") || strings.HasSuffix(str, "!") || strings.HasSuffix(str, "?") {
+		str = str[:len(str)-1]
+	}
+	return str
 }
 
 func fatal(err error) {
