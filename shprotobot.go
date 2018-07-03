@@ -39,7 +39,7 @@ func main() {
 			continue
 		}
 		rand.Seed(time.Now().UTC().UnixNano())
-		words := strings.Split(update.Message.Text, " ")
+		words := regexp.MustCompile("\\p{L}+").FindAllString(update.Message.Text, -1)
 		shprots := []string{}
 		for _, word := range words {
 			word = strings.ToLower(word)
