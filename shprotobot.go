@@ -21,7 +21,7 @@ var err error
 var bot *tgbotapi.BotAPI
 
 func main() {
-	reg, _ := regexp.Compile("^пр(([уеыаэию]т)|о)")
+	reg, _ := regexp.Compile("^пр(([аеёиуыэюя]т)|о)")
 	file, _ := os.Open("config.json")
 	defer file.Close()
 	decoder := json.NewDecoder(file)
